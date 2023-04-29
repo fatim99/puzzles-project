@@ -2,8 +2,7 @@ package sudokuse;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
 
 public class sukokuServer {
  /**
@@ -41,23 +40,9 @@ public class sukokuServer {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
              // Serve HTML page with links to the two images
-            //BufferedImage image = ImageIO.read(new File("C:\\Users\\rasha\\Desktop\\" + imageName + ".png"));
+           
         }
       }
-    
-    
-    /**
- * Returns the current time in the format "yyyy-MM-dd HH:mm:ss".
- * @return a String representing the current time
- */
-public static String getCurrentTime(){
-LocalDateTime now = LocalDateTime.now();
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-    return now.format(formatter);
-
-}
-    
-
 }
 
 /**
