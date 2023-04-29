@@ -1,23 +1,55 @@
 
 package sudokuse;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+
   
 public class sudokuClient {
+
     /**
-     * * @param args An array of command-line arguments.
-     * Displays the selected image from the server.
+     * Prompts the user for input and returns the chosen image type.
+     * 
+     * @return The chosen image type.
+     */
+    public static String getImageChoice() {
+        
+        return imageChoice;
+    }
+
+    /**
+     * Sends an HTTP request for the specified image type and returns the response as a BufferedImage.
+     * 
+     * @param imageChoice The chosen image type.
+     * @return The response as a BufferedImage.
      * @throws IOException If an I/O error occurs while connecting to the server or reading the response.
      */
-     public static void main(String[] args) throws IOException {
-     // Get user input for image choice
-     
-     
-     // Send HTTP request for selected image
-     //URL url = new URL("http://localhost:8080/image?image=" + imageChoice);
-     
-     // Read response as image and display in JFrame
-     }}
+    public static BufferedImage getImageFromServer(String imageChoice) throws IOException {
+        
+        return image;
+    }
+
+    /**
+     * Displays the specified image in a JFrame.
+     * 
+     * @param image The image to display.
+     */
+    public static void displayImage(BufferedImage image) {
+       
+    }
+
+    /**
+     * Runs the client.
+     * 
+     * @param args An array of command-line arguments.
+     * @throws IOException If an I/O error occurs while connecting to the server or reading the response.
+     */
+    public static void main(String[] args) throws IOException {
+        
+    }
+
+}
+
 
 /**
  * Partition:
@@ -41,7 +73,7 @@ Subdomains:
 
 User input for image choice:
 a. Partition 1a: Enter a valid name within the range of available image names.
-b. Partition 1b: Enter a number outside the range of available image names.
+b. Partition 1b: Enter a string outside the range of available image names.
 
 
 HTTP request for selected image:
@@ -52,19 +84,18 @@ c. Partition 2c: Send an HTTP request that results in network errors (e.g., conn
 Response as image:
 a. Partition 3a: Receive a valid image as the response.
 b. Partition 3b: Receive an error message as the response.
-c. Partition 3c: Receive an empty response.
+
 
 Test coverage:
 * The test suite cover all the subdomains
 
-Test for partition 1a: Enter a valid number within the range of available images.
-
+Test for partition 1a: Enter a valid string within the range of available images.
 Expected result: The program should proceed to send an HTTP request for the selected image.
-Test for partition 1b: Enter a number outside the range of available images.
-
-
-
-Expected result: The program should display an error message indicating that the input is invalid.
+* 
+Test for partition 1b: Enter a string outside the range of available 
+* Expected result: The program should display an error message indicating that the input is invalid.
+* 
+* 
 Test for partition 2a: Send a valid HTTP request to the server.
 
 Expected result: The program should receive a valid response containing the selected image.
@@ -80,7 +111,6 @@ Expected result: The program should display the selected image in a JFrame.
 Test for partition 3b: Receive an error message as the response.
 
 Expected result: The program should display an error message indicating that there is a problem with the server.
-Test for partition 3c: Receive an empty response.
+* 
 
-Expected result: The program should display an error message indicating that the response is empty.
  */
