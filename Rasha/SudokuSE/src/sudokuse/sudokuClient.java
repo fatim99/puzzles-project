@@ -8,12 +8,12 @@ import java.io.IOException;
 public class sudokuClient {
 
     /**
-     * Prompts the user for input and returns the chosen image type.
+     * Prompts the user for input(solved or notsolved) and returns the chosen image type.
      * 
      * @return The chosen image type.
      */
-    public static String getImageChoice() {
-        
+     public static String getImageChoice() {
+  
         return imageChoice;
     }
 
@@ -55,7 +55,7 @@ public class sudokuClient {
  * Partition:
 
 User input for image choice:
-a. Valid input .
+a. Valid input(solved or notsolved) .
 b. Invalid input (a string outside the range of available images).
 
 
@@ -72,7 +72,7 @@ c. Empty response (nothing is returned).
 Subdomains:
 
 User input for image choice:
-a. Partition 1a: Enter a valid name within the range of available image names.
+a. Partition 1a: Enter a valid name(solved or not solved) within the range of available image names.
 b. Partition 1b: Enter a string outside the range of available image names.
 
 
@@ -84,7 +84,7 @@ c. Partition 2c: Send an HTTP request that results in network errors (e.g., conn
 Response as image:
 a. Partition 3a: Receive a valid image as the response.
 b. Partition 3b: Receive an error message as the response.
-
+c. Partition 3c: Empty response (nothing is returned).
 
 Test coverage:
 * The test suite cover all the subdomains

@@ -49,32 +49,30 @@ public class sukokuServer {
  * 
  Partitions:
 
-HTTP requests to /image endpoint with valid image name
-HTTP requests to /image endpoint with invalid image name
-HTTP requests to /index endpoint
+1-HTTP requests to /image endpoint with valid image name
+2-HTTP requests to /image endpoint with invalid image name
+3-HTTP requests to /index endpoint
 
 
 Subdomains:
 
-Valid image names:
+1-Valid image names:
 a.solved
 b. notsolved
-Invalid image names:
+
+2-Invalid image names:
 a. Empty string
 b. Non-existent image name
-c. Image name with incorrect file extension
+
 
 Test coverage:
-* The test suite cover the three subdomains: valid_image, invalid_image, and no_image_name.
-* Each subdomain is tested with one test case that verifies the expected behavior
+* The test suite cover the  subdomains: valid_image, invalid_image.
+* Each subdomain is tested with  test case that verifies the expected behavior
 * 
-Partition 1, Subdomain 1a: HTTP request to /image endpoint with valid .jpg image name returns expected image content
-Partition 1, Subdomain 1b: HTTP request to /image endpoint with invalid image name returns error message
-Partition 1, Subdomain 2a: HTTP request to /image endpoint with empty image name returns error message
-Partition 1, Subdomain 2b: HTTP request to /image endpoint with non-existent image name returns error message
-Partition 1, Subdomain 2c: HTTP request to /image endpoint with image name with incorrect file extension returns error message
-Partition 1, Subdomain 1b: HTTP request to /image endpoint with valid .png image name returns expected image content
-Partition 1, Subdomain 1c: HTTP request to /image endpoint with valid .gif image name returns expected image content
-Partition 3, Subdomain 3a: HTTP request to /index endpoint returns HTML page with links to the two images
-Partition 3, Subdomain 3b: HTML page returned by /index endpoint has correct image links and content
+Partition 1: HTTP request to /image endpoint with valid  image name returns expected image content
+Partition 2: HTTP request to /image endpoint with invalid image name returns error message
+Partition 2 : HTTP request to /image endpoint with empty image name returns error message
+Partition 2 : HTTP request to /image endpoint with non-existent image name returns error message
+Partition 3 : HTTP request to /index endpoint returns HTML page with links to the two images
+Partition 3: HTML page returned by /index endpoint has correct image links and content
  */
