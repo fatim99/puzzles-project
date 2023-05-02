@@ -24,6 +24,7 @@ public class HTTPClient {
     */
     private static String sendGetRequest(String url) throws IOException{
         //Need to implement this method
+        return "response";
     }
 
     /** 
@@ -45,5 +46,6 @@ public class HTTPClient {
     */
     private static boolean openInBrowser(String fileName) throws IOException {
         //Need to implement this method
+        return true;
     }
 }

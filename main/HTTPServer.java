@@ -54,5 +54,6 @@ public class HTTPServer {
     */
     private static boolean openInBrowser(String fileName) throws IOException {
         //Need to implement this method
+        return true;
     }
 }
