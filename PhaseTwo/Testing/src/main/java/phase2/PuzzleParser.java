@@ -11,22 +11,15 @@ public class PuzzleParser {
     private PuzzleParser() {
     }
 
-    /*
-      * @param filePath the path of the file containing the puzzle data
-      * @return a 2D array of strings representing the parsed puzzle data
-      * @throws IOException if an I/O error occurs while reading the file
-     */
- // Partition: Parsing puzzle data from a file
-	
+    // Partition: Parsing puzzle data from a file
     // Subdomain: 
 	// 1. Valid file path with correct puzzle data
     // 2. Valid file path with empty puzzle data
     // 3. Invalid file path
-	
     // Test Cases:
-    // 1. Valid file path with 9rows and 9 columns puzzle data-->return expected puzzle
-    // 2. Valid empty file path with 0 rows and 0 columns-->return 0
-    // 3. Invalid file path with a spelling mistake--> IOException
+    // 1. Valid file path with 9rows and 9 columns puzzle data-->return expected puzzle (cover Subdomain 1 )
+    // 2. Valid empty file path with 0 rows and 0 columns-->return 0 (cover Subdomain 2 )
+    // 3. Invalid file path with a spelling mistake--> IOException (cover Subdomain 3 )
     public static String[][] parsePuzzleData(String filePath) throws IOException {
         // Create a BufferedReader to read the puzzle data from the file
         BufferedReader reader = new BufferedReader(new FileReader(filePath));
@@ -58,23 +51,15 @@ public class PuzzleParser {
         return puzzle;
     }
 
-    /**
-     * @param filePath the path of the file to count the rows in
-     * @return the number of rows in the file
-     * @throws IOException if an I/O error occurs while reading the file
-     */
- // Partition: Counting the number of rows in a file
-	
+    // Partition: Counting the number of rows in a file
     // Subdomain: 
 	// 1. Empty file 
     // 2. File with a single row
     // 3. File with multiple rows
-	
     // Test Cases:
-   
-	// 1. Empty file (0 rows)-->return 0
-    // 2. File with a single row and Five columns-->return 1
-    // 3. File with Seven rows and one columns-->return 7
+	// 1. Empty file (0 rows)-->return 0 (cover Subdomain 1 )
+    // 2. File with a single row and Five columns-->return 1 (cover Subdomain 2 )
+    // 3. File with Seven rows and one columns-->return 7 (cover Subdomain 3 )
     static int countRows(String filePath) throws IOException {
         // Create a BufferedReader to read the puzzle data from the file
         BufferedReader reader = new BufferedReader(new FileReader(filePath));
@@ -90,23 +75,15 @@ public class PuzzleParser {
         return numRows;
     }
 
-    /**
-     * @param filePath the path of the file to count the columns in
-     * @return the number of columns in the file
-     * @throws IOException if an I/O error occurs while reading the file
-     */
     // Partition: Counting the number of columns in a file
-	
     // Subdomain: 
 	// 1. Empty file 
     // 2. File with a single row and multiple columns
     // 3. File with multiple rows and one columns
-	
     // Test Cases:
-    // 1. Empty file (0 columns)-->return 0
-    // 2. File with a single row and Five columns-->return 5
-    // 3. File with Seven rows and one columns-->return 1
-     
+    // 1. Empty file (0 columns)-->return 0 (cover Subdomain 1 )
+    // 2. File with a single row and Five columns-->return 5 (cover Subdomain 2 )
+    // 3. File with Seven rows and one columns-->return 1 (cover Subdomain 3 )
     static int countCols(String filePath) throws IOException {
         // Create a BufferedReader to read the puzzle data from the file
         BufferedReader reader = new BufferedReader(new FileReader(filePath));

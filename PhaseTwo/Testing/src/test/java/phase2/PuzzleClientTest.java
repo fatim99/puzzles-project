@@ -1,50 +1,41 @@
 package phase2;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
-
-import org.junit.jupiter.api.BeforeEach;
-import javax.swing.*;
-import java.awt.event.ActionListener;
+import java.io.IOException;
+import com.sun.net.httpserver.HttpExchange;
+import static org.junit.jupiter.api.Assertions.*;
 
 class PuzzleClientTest {
 
-    private PuzzleClient puzzleClient;
-    private JButton sudokuButton;
-    private JButton hexSudokuButton;
+    @Test
+    void testPuzzleHandler_EmptyPuzzleFile() {
+        String emptyPuzzleFile = ""; // Empty puzzle file for testing
 
-    @BeforeEach
-    void setUp() {
-        puzzleClient = new PuzzleClient();
-        puzzleClient.createAndShowGUI();
-        sudokuButton = puzzleClient.sudokuButton;
-        hexSudokuButton = puzzleClient.hexSudokuButton;
+        PuzzleServer.PuzzleHandler puzzleHandler = new PuzzleServer.PuzzleHandler(emptyPuzzleFile);
+
+        // Verify that the puzzleHandler is constructed successfully with the specified
+        // puzzle file
+        assertEquals(emptyPuzzleFile, puzzleHandler.puzzleFile);
     }
 
     @Test
-    void testCreateAndShowGUI_GuiCreatedAndVisible() {
-        JFrame frame = puzzleClient.frame;
-        assertNotNull(frame);
-        assertEquals("Puzzle Client", frame.getTitle());
-        assertEquals(JFrame.EXIT_ON_CLOSE, frame.getDefaultCloseOperation());
-        assertTrue(frame.isVisible());
+    void testPuzzleHandler_ValidPuzzleFile() {
+        String validPuzzleFile = "SudokuBlankPuzzle.txt"; // Valid puzzle file for testing
+
+        PuzzleServer.PuzzleHandler puzzleHandler = new PuzzleServer.PuzzleHandler(validPuzzleFile);
+
+        // Verify that the puzzleHandler is constructed successfully with the specified
+        // puzzle file
+        assertEquals(validPuzzleFile, puzzleHandler.puzzleFile);
     }
 
     @Test
-    void testCreateAndShowGUI_ButtonsCreatedAndActionListenersSet() {
-        assertNotNull(sudokuButton);
-        assertNotNull(hexSudokuButton);
+    void testHandle_InvalidExchange() {
+        PuzzleServer.PuzzleHandler puzzleHandler = new PuzzleServer.PuzzleHandler("ValidPuzzleFile.txt");
+        HttpExchange invalidExchange = null; // Invalid exchange for testing
 
-        ActionListener[] sudokuListeners = sudokuButton.getActionListeners();
-        ActionListener[] hexSudokuListeners = hexSudokuButton.getActionListeners();
-
-        assertEquals(1, sudokuListeners.length);
-        assertEquals(1, hexSudokuListeners.length);
+        assertThrows(IOException.class, () -> puzzleHandler.handle(invalidExchange));
+        // Verify that an IOException is thrown when handling an invalid exchange
     }
 
-    
-    
-
-    
 }

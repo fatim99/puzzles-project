@@ -80,21 +80,20 @@ public class PuzzleClientv1 {
         frame.setSize(400, 400);
         frame.setVisible(true);
     }
-/*Test Cases:
-
-Verify that the user input is correctly saved to the puzzle state.
-Verify that an output file is created and written with the correct user input and puzzle state.
-Verify that an error message is shown when there is an error while saving the user input.
-Testing Plan:
-  Partition the user input:
-Test with valid user input (digits from 1 to 9 or A to G, or '-' for empty cells).
-Test with invalid user input (empty input or invalid characters).
-Partition the output file:
-Test with an existing output file.
-Test without an existing output file.
-Subdomain: File I/O
-Verify the creation and writing of the output file.
-Verify the handling of errors during file I/O operations.
+/*
+// Partition the user input:
+// Test with valid user input (digits from 1 to 9 or A to G, or '-' for empty cells).
+// Test with invalid user input (empty input or invalid characters).
+// Partition the output file:
+// Test with an existing output file.
+// Test without an existing output file.
+// Subdomain: File I/O
+// 1.  Verify the creation and writing of the output file.
+// 2.  Verify the handling of errors during file I/O operations.
+// Test Cases:
+// 1.  Verify that the user input is correctly saved to the puzzle state. (cover Subdomain 1)
+// 2.  Verify that an output file is created and written with the correct user input and puzzle state. (cover Subdomain 2)
+// 3.  Verify that an error message is shown when there is an error while saving the user input. (cover Subdomain 2)
  */
     private void saveUserInput() {
         String[][] userInput = new String[puzzleFields.length][puzzleFields[0].length];
@@ -143,34 +142,29 @@ Verify the handling of errors during file I/O operations.
         }
     }
 
-    /*
-     * 
-Verify that a valid input returns true.
-Verify that an invalid input returns false.
-Testing Plan:
-
-Partition the input:
-Test with valid inputs (digits from 1 to 9 or A to G, or '-').
-Test with invalid inputs (empty input or invalid characters).
-Subdomain: Input Validation
-Verify the correctness of the regular expression used for input validation.
-     * 
-     */
+/*
+// Partition the input:
+// Test with valid inputs (digits from 1 to 9 or A to G, or '-').
+// Test with invalid inputs (empty input or invalid characters).
+// Subdomain: Input Validation
+// 1. Verify the correctness of the regular expression used for input validation.
+// Test Case:
+// 2. Verify that an invalid input returns false. (cover Subdomain 1)
+*/
     private boolean isValidInput(String input) {
         return input.matches("[1-9]|1[0-6]|-");
     }
 /*
- * Test Cases:
-
-Verify that an error message is returned for an empty input.
-Verify that an error message is returned for an invalid input.
-Testing Plan:
-
-Partition the input:
-Test with an empty input.
-Test with an invalid input.
-Subdomain: Error Handling
-Verify the correctness and clarity of the error messages returned.*/
+// Partition the input:
+// Test with an empty input.
+// Test with an invalid input.
+// Subdomain: Error Handling
+// 1. Verify the correctness and clarity of the error messages returned when there is an empty input.
+// 2. Verify the correctness and clarity of the error messages returned when there is an invalid input.
+// Test Cases:
+// Verify that an error message is returned for an empty input. (cover Subdomain 1)
+// Verify that an error message is returned for an invalid input. (cover Subdomain 2)
+*/
     private String getErrorMessage(String input) {
         if (input.isEmpty()) {
             return "Input cannot be empty.";
@@ -179,48 +173,39 @@ Verify the correctness and clarity of the error messages returned.*/
         }
     }
     /*
-     * Test Cases:
-
-    Verify that the error message dialog is displayed correctly with the given error message.
-    Testing Plan:
-
-    Partition the error messages:
-    Test with a general error message.
-    Test with specific error messages related to input validation.
-    Subdomain: Error Handling
-    Verify the correct display of error messages in the error message dialog.
+    // Partition the error messages:
+    // Test with a general error message.
+    // Test with specific error messages related to input validation.
+    // Subdomain: Error Handling
+    // 1.   Verify the correct display of error messages in the error message dialog.
+    // Test Cases:
+    // 1.   Verify that the error message dialog is displayed correctly with the given error message. (cover Subdomain 1)
      */
     private void showErrorMessage(String errorMessage) {
         JOptionPane.showMessageDialog(frame, errorMessage, "Invalid Input", JOptionPane.ERROR_MESSAGE);
     }
 /*
- * Test Cases:
-
-Verify that the message dialog is displayed correctly with the given message.
-Testing Plan:
-
-Partition the messages:
-Test with a general message.
-Test with specific messages related to user input saving.
-Subdomain: User Interaction
-Verify the correct display of messages in the message dialog.
+// Partition the messages:
+// Test with a general message.
+// Test with specific messages related to user input saving.
+// Subdomain: User Interaction
+// 1.   Verify the correct display of messages in the message dialog.
+// Test Cases:
+// 1.   Verify that the message dialog is displayed correctly with the given message. (cover Subdomain 1)
  */
     private void showMessage(String message) {
         JOptionPane.showMessageDialog(frame, message, "Message", JOptionPane.INFORMATION_MESSAGE);
     }
 /*
- * Test Cases:
-
-Verify that the puzzle is fetched correctly from the given URL.
-Verify that an error message is shown when there is an error while fetching the puzzle.
-Testing Plan:
-
-Partition the URL and response code:
-Test with a valid URL and successful response.
-Test with an invalid URL and unsuccessful response.
-Subdomain: Network Communication
-Verify the correct fetching of the puzzle from the URL.
-Verify the handling of errors during network communication.
+// Partition the URL and response code:
+// Test with a valid URL and successful response.
+// Test with an invalid URL and unsuccessful response.
+// Subdomain: Network Communication
+// 1.   Verify the correct fetching of the puzzle from the URL.
+// 2.   Verify the handling of errors during network communication.
+// Test Cases:
+// 1.   Verify that the puzzle is fetched correctly from the given URL. (cover Subdomain 1)
+// 2.   Verify that an error message is shown when there is an error while fetching the puzzle. (cover Subdomain 2)
  */
     private void fetchAndDisplayPuzzle(String url, int puzzleSize) {
         try {
@@ -256,18 +241,15 @@ Verify the handling of errors during network communication.
         }
     }
 /*
- * Test Cases:
-
-Verify that the puzzle is displayed correctly in the puzzle panel.
-Verify that the finish panel becomes visible after displaying the puzzle.
-Testing Plan:
-
-Partition the puzzle:
-Test with different puzzle sizes (e.g., 9x9, 16x16).
-Test with different puzzle values (digits from 1 to 9 or A to G).
-Subdomain: GUI
-Verify the correct display of the puzzle in the puzzle panel.
-Verify the visibility of the finish panel after displaying the puzzle.
+// Partition the puzzle:
+// Test with different puzzle sizes (e.g., 9x9, 16x16).
+// Test with different puzzle values (digits from 1 to 9 or A to G).
+// Subdomain: GUI
+// 1.   Verify the correct display of the puzzle in the puzzle panel.
+// 2.   Verify the visibility of the finish panel after displaying the puzzle.
+// Test Cases:
+// 1.   Verify that the puzzle is displayed correctly in the puzzle panel. (cover Subdomain 1)
+// 2.   Verify that the finish panel becomes visible after displaying the puzzle. (cover Subdomain 2)
  */
     private void displayPuzzle(String[][] puzzle, int puzzleSize) {
         puzzlePanel.removeAll();
@@ -293,17 +275,14 @@ Verify the visibility of the finish panel after displaying the puzzle.
         frame.repaint();
     }
 /*
- * Test Cases:
-
-Verify that the solution frame is created and displayed correctly with the given solution.
-Testing Plan:
-
-Partition the solution:
-Test with different puzzle sizes (e.g., 9x9, 16x16).
-Test with different solution values (digits from 1 to 9 or A to G).
-Subdomain: GUI
-Verify the creation and display of the solution frame.
-Verify the correctness of the solution displayed in the solution frame.
+// Partition the solution:
+// Test with different puzzle sizes (e.g., 9x9, 16x16).
+// Test with different solution values (digits from 1 to 9 or A to G).
+// Subdomain: GUI
+// 1. Verify the creation and display of the solution frame.
+// 2. Verify the correctness of the solution displayed in the solution frame.
+// Test Cases:
+// 1. Verify that the solution frame is created and displayed correctly with the given solution. (cover subdomain 1 and 2)
  */
     private void showSolution() {
         String[][] solution = puzzleState.getPuzzle();
