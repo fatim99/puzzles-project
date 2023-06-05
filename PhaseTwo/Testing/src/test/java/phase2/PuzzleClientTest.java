@@ -1,5 +1,6 @@
 package phase2;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import com.sun.net.httpserver.HttpExchange;
@@ -36,6 +37,22 @@ class PuzzleClientTest {
 
         assertThrows(IOException.class, () -> puzzleHandler.handle(invalidExchange));
         // Verify that an IOException is thrown when handling an invalid exchange
+    }
+
+    @Test
+    public void testGetErrorMessageForEmptyInput() {
+        PuzzleClientv1 puzzleClient = new PuzzleClientv1();
+        String errorMessage = puzzleClient.getErrorMessage("");
+        String expectedErrorMessage = "Input cannot be empty.";
+        Assertions.assertEquals(expectedErrorMessage, errorMessage);
+    }
+
+    @Test
+    public void testGetErrorMessageForInvalidInput() {
+        PuzzleClientv1 puzzleClient = new PuzzleClientv1();
+        String errorMessage = puzzleClient.getErrorMessage("10");
+        String expectedErrorMessage = "Invalid input. Please enter a digit from 1 to 9 or A to G, or '-' for empty cells.";
+        Assertions.assertEquals(expectedErrorMessage, errorMessage);
     }
 
 }

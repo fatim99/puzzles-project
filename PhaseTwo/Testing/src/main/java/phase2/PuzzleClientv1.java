@@ -165,7 +165,7 @@ public class PuzzleClientv1 {
 // Verify that an error message is returned for an empty input. (cover Subdomain 1)
 // Verify that an error message is returned for an invalid input. (cover Subdomain 2)
 */
-    private String getErrorMessage(String input) {
+    public String getErrorMessage(String input) {
         if (input.isEmpty()) {
             return "Input cannot be empty.";
         } else {
